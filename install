@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [[ $1 != "dev" ]]; then
+    git checkout main && git pull;
+fi
+
+extension_folder="hibernate-gnome-extension@integervector"
+extension_path="/home/$USER/.local/share/gnome-shell/extensions"
+
+rm -rf "$extension_path/$extension_folder"
+cp -r "./$extension_folder" $extension_path
