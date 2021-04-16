@@ -1,0 +1,10 @@
+{
+    "description": "extension that provides Hibernate option in gnome menu",
+    "name": "hibernate-gnome-extension",
+    "shell-version": [
+        "3.36.8"
+    ],
+    "url": "https://github.com/IntegerVector/hibernate-gnome-extension",
+    "uuid": "hibernate-gnome-extension@integervector",
+    "version": 1
+}
