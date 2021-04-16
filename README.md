@@ -49,6 +49,7 @@ This is a stupid simple extension for enabling hibernation option for GNOME desk
     If hibernation works, then you can install this extension, if not, google your problems...
     
 ## Installation
+
 Clone extension project:
 ```bash
 $ git clone https://github.com/IntegerVector/hibernate-gnome-extension.git
@@ -58,6 +59,14 @@ run `install` script:
 ```bash
 $ ./install
 ```
-It will pull changes from main branch and install extension to you system
+It will pull changes from main branch and install extension to you system, so it also updates extension
 
 Finally, you can enable extension using "Extensions" app (or tweak tools in older GNOME versions).
+
+## Removing
+
+turn extension off, then run `remove` script:
+```bash
+$ ./remove
+```
+then you can remove project folder. 
