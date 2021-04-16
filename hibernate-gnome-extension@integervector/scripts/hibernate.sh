@@ -1,2 +1,2 @@
 #!/bin/bash
-pkexec systemctl hibernate
+systemctl hibernate
