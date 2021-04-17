@@ -2,24 +2,33 @@ const Me = imports.misc.extensionUtils.getCurrentExtension();
 const Util = imports.misc.util;
 const Main = imports.ui.main;
 
-const AggregateMenu = Main.panel.statusArea.aggregateMenu;
-
-const scripts = {
-  hibernate: 'hibernate.sh'
-};
-
-let hibernateLabel = '';
-
-/**
- * Extension events handlers functions:
- */
+let hibernateScriptName = 'hibernate.sh';
+let executionScriptPath = null;
+let hibernateLabel = null;
+let aggregateMenu = null;
+let hibernateMenuItem = null;
 
 function init() {
   hibernateLabel = getHibernateLabel();
+  executionScriptPath = getScriptsFolderPath();
+  aggregateMenu = Main.panel.statusArea.aggregateMenu;
 }
 
 function enable() {
-  AggregateMenu._system._sessionSubMenu.menu.addAction(
+  hibernateMenuItem = createHibernateMenuItem();
+}
+
+function disable() {
+  hibernateMenuItem.destroy();
+  hibernateMenuItem = null;
+}
+
+/**
+ * Private functions:
+ */
+
+function createHibernateMenuItem() {
+  return aggregateMenu._system._sessionSubMenu.menu.addAction(
     hibernateLabel,
     () => {
       hibernateActionHandler();
@@ -27,28 +36,15 @@ function enable() {
   );
 }
 
-function disable() {
+function hibernateActionHandler() {
+  Util.spawn([EXECUTION_SCRIPT_PATH + '/' + HIBERNATE_SCRIPT_NAME]);
 }
-
-/**
- * Private functions:
- */
-
 
 function getHibernateLabel() {
-  // To Do:
+  // To Do: Add localization
   return 'Hibernate';
-}
-
-function hibernateActionHandler() {
-  const executionScriptPath = getScriptsFolderPath();
-  executeCommand([executionScriptPath + '/' + scripts.hibernate]);
 }
 
 function getScriptsFolderPath() {
   return Me.dir.get_child('scripts').get_path();
-}
-
-function executeCommand(args) {
-  Util.spawn(args);
 }
