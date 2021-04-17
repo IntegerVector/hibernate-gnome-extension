@@ -43,7 +43,7 @@ function createHibernateMenuItem() {
 }
 
 function hibernateActionHandler() {
-  Util.spawn([EXECUTION_SCRIPT_PATH + '/' + HIBERNATE_SCRIPT_NAME]);
+  Util.spawn([executionScriptPath + '/' + hibernateScriptName]);
 }
 
 function getScriptsFolderPath() {
